@@ -3,16 +3,13 @@ var sp     = getSpotifyApi(10),
     models = sp.require('sp://import/scripts/api/models');
 
 $(function() {
-
   // create a blank playlist
   playlist = new models.Playlist("Music/Tech meetup");
-
-  var oldListLength = 0;
-
-  setInterval(function() {
+  var oldListLength = 0,
+      poll = function(callback) {
     console.log("POLLING");
     // get songs from server
-    $.getJSON("http://server.dev/list", function(data) {
+    $.getJSON("http://musictechmeetup.com/list", function(data) {
       console.log(data);
       // grab the latest additions
       var newTracks = data.slice(oldListLength, data.length);
@@ -23,11 +20,16 @@ $(function() {
         playlist.add(track);
       }
       oldListLength = data.length;
-    }, 200000);
-  });
+    });
+  };
+
+  poll();
+
+  setInterval(poll, 20000);
 
   // create a list view for the playlist
   listView = new views.List(playlist);
+
   // append list to view
   $("div.playlist").append(listView.node);
 });

@@ -15,7 +15,7 @@
   },
   "RequiredPermissions": [
     "http://*.spotify.com",
-    "http://server.dev/list"
+    "http://musictechmeetup.com/list"
   ],
   "SupportedLanguages": [
     "en"
