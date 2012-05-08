@@ -4,7 +4,7 @@ var sp     = getSpotifyApi(10),
 
 $(function() {
   // create a blank playlist
-  playlist = new models.Playlist("Music/Tech meetup");
+  playlist = models.Playlist.fromURI("spotify:user:rodreegez:playlist:5EqkTkPMQdhlTdG2RFi7vU");
   var oldListLength = 0,
       poll = function(callback) {
     console.log("POLLING");
@@ -23,7 +23,9 @@ $(function() {
     });
   };
 
-  poll();
+  poll(function() {
+    player.play(playlist.tracks[0].data.uri, playlist.data.uri)
+  });
 
   setInterval(poll, 20000);
 
