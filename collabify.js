@@ -15,7 +15,7 @@ $(function() {
       var newTracks = data.slice(oldListLength, data.length);
       for (var i = 0; i < newTracks.length; i++) {
         // instantiate a track
-        var track = models.Track.fromURI(newTracks[i])
+        var track = models.Track.fromURI(newTracks[i].uri)
         // add track to playlist
         playlist.add(track);
       }
@@ -24,7 +24,7 @@ $(function() {
   };
 
   poll(function() {
-    player.play(playlist.tracks[0].data.uri, playlist.data.uri)
+    player.play(playlist.tracks[0].data.uri, playlist.data.uri);
   });
 
   setInterval(poll, 20000);
