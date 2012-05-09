@@ -5,6 +5,7 @@ var sp     = getSpotifyApi(10),
 $(function() {
   // create a blank playlist
   playlist = models.Playlist.fromURI("spotify:user:rodreegez:playlist:5EqkTkPMQdhlTdG2RFi7vU");
+  playlist.subscribed = true
   var oldListLength = 0,
       poll = function(callback) {
     console.log("POLLING");
