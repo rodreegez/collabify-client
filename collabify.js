@@ -6,11 +6,11 @@ $(function() {
   // create a blank playlist
   playlist = models.Playlist.fromURI("spotify:user:rodreegez:playlist:5EqkTkPMQdhlTdG2RFi7vU");
   playlist.subscribed = true
-  var oldListLength = 0,
+  var oldListLength = playlist.tracks.length,
       poll = function(callback) {
     console.log("POLLING");
     // get songs from server
-    $.getJSON("http://musictechmeetup.com/list", function(data) {
+    $.getJSON("http://musictechmeetup.com/list.js", function(data) {
       console.log(data);
       // grab the latest additions
       var newTracks = data.slice(oldListLength, data.length);
@@ -28,7 +28,7 @@ $(function() {
     player.play(playlist.tracks[0].data.uri, playlist.data.uri);
   });
 
-  setInterval(poll, 20000);
+  setInterval(poll, 10000);
 
   // create a list view for the playlist
   listView = new views.List(playlist);
