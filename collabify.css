@@ -1,5 +1,9 @@
 /*** Header ***/
 header {
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
   width:90%;
   padding:10px 5%;
   background: #007828;
@@ -19,6 +23,21 @@ header h1{
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   text-shadow:1px 1px 0 #075220;
   font-weight:300;
+}
+
+/*** Main ***/
+section#main{
+  position: absolute;
+  top:49px;
+  left:0;
+  right:0;
+  bottom:57px;
+  overflow: auto;
+}
+
+section#main .sp-list{
+  height:100%;
+  max-height: 100%;
 }
 
 /*** Footer ***/
