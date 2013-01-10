@@ -35,4 +35,25 @@ $(function() {
 
   // append list to view
   $("div.playlist").append(listView.node);
+
+  // listen for state changes
+  models.player.observe(models.EVENT.CHANGE, function(event) {
+    if(event.data.playstate){
+      if(models.player.playing) {
+        $.ajax({
+          type: "POST",
+          url: "http://collabify.musictechmeetup.com/now-playing.json",
+          data: {track: models.player.track.data.uri},
+          dataType: 'json'
+        })
+      } else {
+        $.ajax({
+          type: "POST",
+          url: "http://collabify.musictechmeetup.com/now-playing.json",
+          data: {track: ""},
+          dataType: 'json'
+        })
+      }
+    }
+  });
 });
