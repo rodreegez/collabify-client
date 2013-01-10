@@ -10,13 +10,13 @@ $(function() {
       poll = function(callback) {
     console.log("POLLING");
     // get songs from server
-    $.getJSON("http://musictechmeetup.com/list.js", function(data) {
+    $.getJSON("http://collabify.musictechmeetup.com/list.js", function(data) {
       console.log(data);
       // grab the latest additions
       var newTracks = data.slice(oldListLength, data.length);
       for (var i = 0; i < newTracks.length; i++) {
         // instantiate a track
-        var track = models.Track.fromURI(newTracks[i].uri)
+        var track = models.Track.fromURI(newTracks[i].uri);
         // add track to playlist
         playlist.add(track);
       }

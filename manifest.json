@@ -15,7 +15,7 @@
   },
   "RequiredPermissions": [
     "http://*.spotify.com",
-    "http://musictechmeetup.com"
+    "http://collabify.musictechmeetup.com"
   ],
   "SupportedLanguages": [
     "en"

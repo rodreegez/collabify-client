@@ -55,3 +55,6 @@ footer p{
   line-height:2.5;
   color:#555;
 }
+footer mark{
+  background: #ffffcc;
+}
